@@ -1,9 +1,10 @@
 package com.example.recetarioapp.data
 
+import androidx.compose.runtime.mutableStateListOf
 import com.example.recetarioapp.model.Pokemon
 
 object PokemonRepository {
-    val pokemons = listOf(
+    private val _pokemons = mutableStateListOf(
         Pokemon(
             id = "1",
             numero = "#0001",
@@ -61,7 +62,18 @@ object PokemonRepository {
         )
     )
 
+    val pokemons: List<Pokemon> get() = _pokemons
+
     fun getPokemonById(id: String): Pokemon? {
-        return pokemons.find { it.id == id || it.numero == id }
+        return _pokemons.find { it.id == id || it.numero == id }
+    }
+
+    fun savePokemon(pokemon: Pokemon) {
+        val index = _pokemons.indexOfFirst { it.id == pokemon.id }
+        if (index >= 0) {
+            _pokemons[index] = pokemon
+        } else {
+            _pokemons.add(pokemon)
+        }
     }
 }

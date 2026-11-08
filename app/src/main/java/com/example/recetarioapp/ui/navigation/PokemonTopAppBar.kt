@@ -27,6 +27,8 @@ fun PokemonTopAppBar(
         currentRoute?.startsWith("detalle") == true -> "Detalle del Pokémon"
         currentRoute == Rutas.COMPARAR -> "Comparador de Pokémons"
         currentRoute == Rutas.PERFIL -> "Perfil de Entrenador"
+        currentRoute == Rutas.CREAR -> "Nuevo Pokémon"
+        currentRoute?.startsWith("editar") == true -> "Editar Pokémon"
         else -> "Pokédex App"
     }
 

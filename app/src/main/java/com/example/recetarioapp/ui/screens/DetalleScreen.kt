@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,6 +26,7 @@ import com.example.recetarioapp.ui.components.TypeTag
 fun DetalleScreen(
     pokemonId: String,
     onCompareClick: () -> Unit,
+    onEditClick: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val pokemon = PokemonRepository.getPokemonById(pokemonId)
@@ -94,11 +96,23 @@ fun DetalleScreen(
             }
         }
 
-        Button(
-            onClick = onCompareClick,
-            modifier = Modifier.fillMaxWidth()
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            Text("Comparar con otro Pokémon")
+            OutlinedButton(
+                onClick = { onEditClick(pokemon.id) },
+                modifier = Modifier.weight(1f)
+            ) {
+                Text("Editar Pokémon")
+            }
+
+            Button(
+                onClick = onCompareClick,
+                modifier = Modifier.weight(1f)
+            ) {
+                Text("Comparar")
+            }
         }
     }
 }
@@ -108,6 +122,7 @@ fun DetalleScreen(
 fun DetalleScreenPreview() {
     DetalleScreen(
         pokemonId = "1",
-        onCompareClick = {}
+        onCompareClick = {},
+        onEditClick = {}
     )
 }

@@ -13,6 +13,7 @@ import com.example.recetarioapp.ui.screens.CompararScreen
 import com.example.recetarioapp.ui.screens.DetalleScreen
 import com.example.recetarioapp.ui.screens.HomeScreen
 import com.example.recetarioapp.ui.screens.PerfilScreen
+import com.example.recetarioapp.ui.screens.PokemonFormScreen
 
 @Composable
 fun PokemonNavGraph(
@@ -32,6 +33,9 @@ fun PokemonNavGraph(
                 },
                 onGoToCompare = {
                     navController.navigate(Rutas.COMPARAR)
+                },
+                onAddPokemonClick = {
+                    navController.navigate(Rutas.CREAR)
                 }
             )
         }
@@ -47,6 +51,9 @@ fun PokemonNavGraph(
                 pokemonId = pokemonId,
                 onCompareClick = {
                     navController.navigate(Rutas.COMPARAR)
+                },
+                onEditClick = { id ->
+                    navController.navigate(Rutas.editarConId(id))
                 }
             )
         }
@@ -61,6 +68,39 @@ fun PokemonNavGraph(
 
         composable(Rutas.PERFIL) {
             PerfilScreen()
+        }
+
+        composable(Rutas.CREAR) {
+            PokemonFormScreen(
+                pokemonInicial = null,
+                onSaveClick = { nuevoPokemon ->
+                    PokemonRepository.savePokemon(nuevoPokemon)
+                    navController.popBackStack()
+                },
+                onCancelClick = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable(
+            route = Rutas.EDITAR,
+            arguments = listOf(
+                navArgument("pokemonId") { type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val pokemonId = backStackEntry.arguments?.getString("pokemonId") ?: ""
+            val pokemonToEdit = PokemonRepository.getPokemonById(pokemonId)
+            PokemonFormScreen(
+                pokemonInicial = pokemonToEdit,
+                onSaveClick = { pokemonEditado ->
+                    PokemonRepository.savePokemon(pokemonEditado)
+                    navController.popBackStack()
+                },
+                onCancelClick = {
+                    navController.popBackStack()
+                }
+            )
         }
     }
 }
