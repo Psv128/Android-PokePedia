@@ -1,0 +1,8 @@
+com.example.recetarioapp-pngs-0 C:\Users\10752\Downloads\Programacion\Android\PMDM-RecetarioApp-sprint-01\app\build\generated\res\pngs\debug
+com.example.recetarioapp-updated_navigation_xml-1 C:\Users\10752\Downloads\Programacion\Android\PMDM-RecetarioApp-sprint-01\app\build\generated\updated_navigation_xml\debug
+com.example.recetarioapp-packageDebugResources-2 C:\Users\10752\Downloads\Programacion\Android\PMDM-RecetarioApp-sprint-01\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.recetarioapp-packageDebugResources-3 C:\Users\10752\Downloads\Programacion\Android\PMDM-RecetarioApp-sprint-01\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.recetarioapp-debug-4 C:\Users\10752\Downloads\Programacion\Android\PMDM-RecetarioApp-sprint-01\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.example.recetarioapp-debug-5 C:\Users\10752\Downloads\Programacion\Android\PMDM-RecetarioApp-sprint-01\app\src\debug\res
+com.example.recetarioapp-main-6 C:\Users\10752\Downloads\Programacion\Android\PMDM-RecetarioApp-sprint-01\app\src\main\res
+gradleHome-0 C:\Users\10752\.gradle
